@@ -34,4 +34,5 @@ Aside from the main branch and the main development branch, every branch must fo
 #### Example:
 - 12.0-vcls_leave_module
 - 12.0-fix_bug_ticket
+
 The name of the branch must be as clear as possible.
