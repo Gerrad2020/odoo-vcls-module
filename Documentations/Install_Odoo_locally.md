@@ -1,12 +1,15 @@
 # Install the Odoo Development Environment (Windows 10)
 ## Install dependencies (1)
 - Install the latest version of [Python](https://www.python.org/downloads/)
+
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
 - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/)
+
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
 
 - Install the latest version of [PostGreSQL](https://www.postgresql.org/download/windows/)
+
 ![Screenshot postGreSQL webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pgweb.png)
 ![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
     - Open pgAdmin4
@@ -17,6 +20,7 @@
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pg2.png)
 
 - Install the latest version of [NodeJS](https://nodejs.org/en/)
+
 ![Screenshot NodeJS webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_nodejs.png)
 
 - Install Git and GitHub desktop
@@ -25,6 +29,7 @@
 
 ## Copy Odoo source files and VCLS source files
 - Create a new directory (it will store your Odoo files)
+
 ![screenshot folder](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_folder.png)
 
 - Open your git client (I will use GIT BASH) and go to your folder:
@@ -90,13 +95,16 @@ python install –r requirements.txt
 ```
 python ./odoo-bin -w odoo -r odoo --addons-path=addons,../enterprise,../odoo-vcls-module
 ```
+
 ![Screenshot cmd](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_cmd.png)
 
 - Open any web browser and type the address of your HTTP server:
     - You will be asked to create a new database:
+
 ![Screenshot database](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_db.png)
 
 - Go to Apps and install all VCLS modules (error may occur because of module’s dependencies):
+
 ![Screenshot apps](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_apps.png)
 
 
