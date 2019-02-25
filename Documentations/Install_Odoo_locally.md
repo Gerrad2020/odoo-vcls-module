@@ -13,10 +13,10 @@
 ![Screenshot postGreSQL webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pgweb.png)
 ![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
 
-    - Open pgAdmin4
-    - Create a new user
-        - login: odoo
-        - password: odoo
+- Open pgAdmin4
+- Create a new user
+    - login: odoo
+    - password: odoo
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pg2.png)
 
