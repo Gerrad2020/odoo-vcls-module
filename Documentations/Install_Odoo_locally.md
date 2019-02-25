@@ -28,6 +28,7 @@
 ![screenshot folder](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_folder.png)
 
 - Open your git client (I will use GIT BASH) and go to your folder:
+
 ![Screenshot Git Bash](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_git.png)
 
 - Clone the [Odoo Community repository](https://github.com/odoo/odoo.git):
