@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- Account -->
+    <record model="ir.actions.act_window" id="action_accounts">
+      <field name="name">Accounts</field>
+      <!-- field name="domain">['&',('employee','=',0),('is_company','=',1)]</field -->
+      <field name="domain">[('is_company','=',1)]</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban,tree,form,activity</field>
+    </record>
+
+      <menuitem name="Accounts" parent="contacts.menu_contacts" id="menu_accounts"
+        action="action_accounts" sequence="1" />
+    <!-- End of Account -->
+
+    <!-- Executive -->
+    <record model="ir.actions.act_window" id="action_exec">
+        <field name="name">Executive</field>
+        <field name="domain">[('hidden','=',1)]</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+    </record>
+
+    <menuitem name="Executive" parent="contacts.menu_contacts" id="menu_exec"
+      action="action_exec" sequence="3" />
+    <!-- Enf of Executive -->
+
+    <!-- Activity -->
+    <record model="ir.actions.act_window" id="action_act">
+        <field name="name">Partner's Activity</field>
+        <field name="res_model">res.partner.activity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Activity" parent="contacts.res_partner_menu_config" id="menu_activity"
+    action="action_act" sequence="7"/>
+    <!-- End of Activity -->
+
+    <!-- Product -->
+    <record model="ir.actions.act_window" id="action_pdt">
+        <field name="name">Partner's Product</field>
+        <field name="res_model">res.partner.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Product" parent="contacts.res_partner_menu_config" id="menu_product"
+    action="action_pdt" sequence="8"/>
+    <!-- End of Product -->
+
+    <!-- Seniority -->
+    <record model="ir.actions.act_window" id="action_sny">
+        <field name="name">Partner's Seniority</field>
+        <field name="res_model">res.partner.seniority</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Seniority" parent="contacts.res_partner_menu_config" id="menu_seniority"
+    action="action_sny" sequence="9"/>
+    <!-- End of seniority -->
+
+  </data>
+</odoo> 

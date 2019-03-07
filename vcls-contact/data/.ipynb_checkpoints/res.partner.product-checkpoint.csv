@@ -1,0 +1,9 @@
+id,name
+product_bdrugs,Biologic Drugs
+product_cell,Cell Gene and Tissue Therapy
+product_cdrugs,Chemical Drugs
+product_cmd,Classical Medical Device
+product_dmd,Digital Medical Device
+product_eh,E-Health/M-Health
+product_nut,Nutritionals and Nutriceuticals 
+product_other,Other

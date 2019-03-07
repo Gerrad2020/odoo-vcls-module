@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+    <!-- EXTENDING ACTUAL CRM.LEAD VIEW TO INCLUDE THINGS -->
+        <record model="ir.ui.view" id="vcls_view_crm_lead_form">
+                <field name="name">crm.lead.form.opportunity</field>
+                <field name="model">crm.lead</field>
+                <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+                <field name="arch" type="xml">
+                <field name="partner_address_phone" position="after">
+                    <field name="industry_id"/>
+                    <field name="activity_id"/>
+                    <field name="product_id"/>
+                    <field name="opted_in" />
+                    <field name="seniority_id" />
+                    <field name="no_marketing_coms" />
+                    <field name='to_be_reviewed' />
+                    <field name="private_mail" widget='email' />
+                </field>
+            </field>
+        </record>
+  </data>
+</odoo>

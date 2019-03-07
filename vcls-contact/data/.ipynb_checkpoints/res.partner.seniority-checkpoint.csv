@@ -1,0 +1,11 @@
+id,name
+seniority_ceo,CEO/President/Chairman
+seniority_part,Founder/Partner/Associate/Owner
+seniority_cxo,CxO
+seniority_vp,(EX/SR)VP
+seniority_dir,(Sr)Director
+seniority_head,Head
+seniority_mng,Manager
+seniority_do,Doers[Lead/Coordinator/Executive]
+seniority_ast,Assistant
+seniority_oth,Other

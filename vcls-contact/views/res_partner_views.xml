@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- EXTENDING ACTUAL RES.PARTNER VIEW TO INCLUDE THINGS -->
+        <record model="ir.ui.view" id="vcls_view_partner_form">
+                <field name="name">res.partner.form</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="product_id"/>
+                    <field name="seniority_id" />
+                    <field name="opted_in" />
+                    <field name="no_marketing_coms" />
+                    <field name="private_mail" widget='email' />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
