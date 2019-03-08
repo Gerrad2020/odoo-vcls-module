@@ -32,6 +32,7 @@
         #'views/views.xml',
         #'views/templates.xml',
         'views/crm_lead_views.xml',
+        'views/more_actions.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

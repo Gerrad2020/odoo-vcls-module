@@ -15,6 +15,7 @@
                     <field name="no_marketing_coms" />
                     <field name='to_be_reviewed' />
                     <field name="private_mail" widget='email' />
+                    <field name='touchpoints' />
                 </field>
             </field>
         </record>
