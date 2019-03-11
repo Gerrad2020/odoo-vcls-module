@@ -28,6 +28,9 @@ class VCLSLead(models.Model):
     private_mail = fields.Char(string='private mail', related='partner_id.private_mail')
     touchpoints = fields.Integer(string='Touchpoints', default=1, readonly=True)
 
+    # Test mergeable
+    
+
     @api.multi
     def merge(self):
         context = self.env.context
@@ -40,11 +43,11 @@ class VCLSLead(models.Model):
         if len(lead_ids) == 1:
             raise ValidationError("Please select more than 1 lead !")
 
-        for lead_id in range(len(lead_ids)):
-            for lead_id2 in range(len(lead_ids)):
+        for lead_id in lead_ids:
+            for lead_id2 in lead_ids:
                 if not lead_id == lead_id2:
-                    leadOne = self.env['crm.lead'].search([('id', '=', lead_ids[lead_id])], limit = 1)
-                    leadTwo = self.env['crm.lead'].search([('id', '=', lead_ids[lead_id2])], limit = 1)
+                    leadOne = self.env['crm.lead'].search([('id', '=', lead_id)], limit = 1)
+                    leadTwo = self.env['crm.lead'].search([('id', '=', lead_id2)], limit = 1)
                     
                     if leadOne.create_date and leadTwo.create_date:
                         if leadOne.create_date > leadTwo.create_date:
@@ -54,9 +57,7 @@ class VCLSLead(models.Model):
                     # VERIFY
                         if leadOne.partner_name == leadTwo.partner_name or leadOne.email_from == leadTwo.email_from or leadOne.name == leadTwo.name:
                             if not leadOne.name:
-                                tmp = str(leadOne.name)
-                                leadOne.name = tmp
-                            leadOne.name += ' [' + str(leadTwo.name) + ']'
+                                leadOne.name = leadTwo.name
                             leadOne.touchpoints += leadTwo.touchpoints
                             if not leadOne.partner_id:
                                 leadOne.partner_id = leadTwo.partner_id
