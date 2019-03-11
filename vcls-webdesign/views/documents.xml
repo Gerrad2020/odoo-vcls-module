@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="documents_view_kanban">
+        <field name="name">ir.attachment kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="documents.documents_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_state']" position="after">
+                <field name="folder_id"/>
+                <field name="share_url"/>
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]" position="inside">
+
+                <div data-toggle="tooltip" data-placement="bottom" title="Copy Link to clipboard" class="input-group mb-3">
+
+                    <input type="text" disabled="disabled" class="form-control vcls-token" placeholder="No url generated" t-attf-value="{{record.share_url.raw_value}}" attrs="{'invisible': [('share_url', '==', False)]}"/>
+
+                    <div class="input-group-append" attrs="{'invisible': [('share_url', '!=', False)]}">
+                        <button type="button" class="vcls-generate input-group-text" t-attf-data-id="{{record.id.raw_value}}">Generate &amp; Copy</button>
+                    </div>
+                    <div class="input-group-append" attrs="{'invisible': [('share_url', '==', False)]}">
+                        <button type="button" class="vcls-copy input-group-text" t-attf-data-id="{{record.id.raw_value}}" t-attf-date-url="{{record.share_url.raw_value}}">Copy</button>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
