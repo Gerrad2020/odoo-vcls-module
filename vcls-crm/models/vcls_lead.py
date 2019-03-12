@@ -50,17 +50,39 @@ class VCLSLead(models.Model):
                     leadTwo = self.env['crm.lead'].search([('id', '=', lead_id2)], limit = 1)
                     
                     if leadOne.create_date and leadTwo.create_date:
+                        # The oldest one is the base
                         if leadOne.create_date > leadTwo.create_date:
                             leadTmp = leadOne
                             leadOne = leadTwo
                             leadTwo = leadTmp
-                    # VERIFY
-                        if leadOne.partner_name == leadTwo.partner_name or leadOne.email_from == leadTwo.email_from or leadOne.name == leadTwo.name:
-                            if not leadOne.name:
+                        # VERIFY if mergeable
+                        if leadOne.partner_name == leadTwo.partner_name or leadOne.email_from == leadTwo.email_from or leadOne.contact_name == leadTwo.contact_name:
+                            # Begin merge
+                            if not leadOne.description:
+                                leadOne.description = ''
+                            leadOne.description += '\n\n Merged with another lead : ' + str(leadTwo.name) + '\n\n'
+                            
+
+                            if (not leadOne.name) or leadOne.name == '':
                                 leadOne.name = leadTwo.name
+                            
                             leadOne.touchpoints += leadTwo.touchpoints
+
                             if not leadOne.partner_id:
                                 leadOne.partner_id = leadTwo.partner_id
+                            
+                            if (not leadOne.function) or leadTwo.function == '':
+                                leadOne.function = leadTwo.function
+                            elif leadOne.function and leadTwo.function:
+                                leadOne.description += 'Different Job position : {}'.format(leadTwo.function)
+                            
+                            if (not leadOne.mobile) or leadTwo.mobile == '':
+                                leadOne.mobile = leadTwo.mobile
+                            elif leadOne.mobile and leadTwo.mobile:
+                                leadOne.description += 'Different mobile number : {}'.format(leadTwo.mopile)
+
+
+                            '''
                             if not leadOne.partner_name:
                                 leadOne.partner_name = leadTwo.partner_name
                             if not leadOne.street:
@@ -91,9 +113,6 @@ class VCLSLead(models.Model):
                                 leadOne.function = leadTwo.function
                             if not leadOne.phone:
                                 leadOne.phone = leadTwo.phone
-                            if not leadOne.description:
-                                leadOne.description = ''
-                            leadOne.description += '\n===\n' + str(leadTwo.description)
                             leadOne.message_bounce += leadTwo.message_bounce
                             if not leadOne.date_closed:
                                 leadOne.date_closed = leadTwo.date_closed
@@ -107,6 +126,8 @@ class VCLSLead(models.Model):
                                 leadOne.source_id = leadTwo.source_id
                             if not leadOne.referred:
                                 leadOne.referred = leadTwo.referred
+                            '''
+                            leadOne.description += str(leadTwo.description)
                             leadTwo.unlink()
                     
                     
