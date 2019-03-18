@@ -27,6 +27,7 @@ class VCLSLead(models.Model):
     to_be_reviewed = fields.Boolean(string='To be reviewed', related='partner_id.to_be_reviewed')
     private_mail = fields.Char(string='private mail', related='partner_id.private_mail')
     touchpoints = fields.Integer(string='Touchpoints', default=1, readonly=True)
+    merged_lead = fields.One2many('crm.lead' , 'id', string = 'Merged Lead', readonly = True, default = False)
 
     # Test mergeable
     
@@ -58,16 +59,34 @@ class VCLSLead(models.Model):
                         # VERIFY if mergeable
                         if leadOne.partner_name == leadTwo.partner_name or leadOne.email_from == leadTwo.email_from or leadOne.contact_name == leadTwo.contact_name:
                             # Begin merge
+                            leadOne.touchpoints += leadTwo.touchpoints
+                            leadOne
                             if not leadOne.description:
                                 leadOne.description = ''
                             leadOne.description += '\n\n Merged with another lead : ' + str(leadTwo.name) + '\n\n'
                             
-
                             if (not leadOne.name) or leadOne.name == '':
                                 leadOne.name = leadTwo.name
                             
-                            leadOne.touchpoints += leadTwo.touchpoints
-
+                            if leadOne.contact_name != leadTwo.contact_name:
+                                if not leadOne.contact_name or leadOne.contact_name == '':
+                                    leadOne.contact_name = leadTwo.contact_name
+                                else:
+                                    leadOne.description += 'Different contact name : ' + str(leadTwo.contact_name) + '\n'
+                                        
+                            if leadOne.partner_name != leadTwo.partner_name:
+                                if not leadOne.partner_name or leadOne.partner_name == '':
+                                    leadOne.partner_name = leadTwo.partner_name
+                                else:
+                                    leadOne.description += 'Different partner name : 'str(leadTwo.partner_name) + '\n'
+                            
+                            if leadOne.email_from != leadTwo.email_from:
+                                if not leadOne.email_from or leadOne.email_from == '':
+                                    leadOne.email_from = leadTwo.email_from
+                                else:
+                                    leadOne.description += 'Different partner email : 'str(leadTwo.email_from) + '\n'
+                            
+                            '''
                             if not leadOne.partner_id:
                                 leadOne.partner_id = leadTwo.partner_id
                             
@@ -79,10 +98,8 @@ class VCLSLead(models.Model):
                             if (not leadOne.mobile) or leadTwo.mobile == '':
                                 leadOne.mobile = leadTwo.mobile
                             elif leadOne.mobile and leadTwo.mobile:
-                                leadOne.description += 'Different mobile number : {}'.format(leadTwo.mopile)
+                                leadOne.description += 'Different mobile number : {}'.format(leadTwo.mobile)
 
-
-                            '''
                             if not leadOne.partner_name:
                                 leadOne.partner_name = leadTwo.partner_name
                             if not leadOne.street:
