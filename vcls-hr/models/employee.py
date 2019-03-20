@@ -505,8 +505,11 @@ class Employee(models.Model):
                 #get employees with a tag not having one of the corresponding wt >> we remove the tag
                 emp_having = self.env['hr.employee'].search([('resource_calendar_id.id','not in',tag_related_wts),('category_ids','in',tag_id)])
                 for emp in emp_having:
+                    # delete old tag
                     emp.category_ids -= tag
                     body += '{} '.format(emp.name)
+                
+                # LOG ONLY
                 if emp_having:
                     subject='Kalpa | Employees updated'
                     body += 'removed tag {} '.format(tag_search_name)
@@ -525,6 +528,7 @@ class Employee(models.Model):
                     emp.category_ids |= tag
                     body += '{} '.format(emp.name)
                 
+                # LOG ONLY
                 if emp_missing:
                     subject='Kalpa | Employees updated'
                     body += 'added tag {} '.format(tag_search_name)

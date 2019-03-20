@@ -54,15 +54,44 @@ class LeaveAllocation(models.Model):
         without disturbing the exisitng ones """
         
         childs = self.env['hr.leave.allocation']
+        category_parents = False
+        remaining_day_from_old = 0
         if self.state == 'validate' and self.holiday_type in ['category', 'department', 'company']:
             if self.holiday_type == 'category':
                 employees = self.category_id.employee_ids
+                # GET ALL PARENTS with the same holiday_type
+                category_parents = self.env['hr.leave.allocation'].search([('holiday_type', '=', 'category')])
             elif self.holiday_type == 'department':
                 employees = self.department_id.member_ids
             else:
                 employees = self.env['hr.employee'].search([('company_id', '=', self.mode_company_id.id)])
+            #########
+            # allocation parent lié à un tag et même holliday_type
+            # allocation validée
+            # avec tag not in tags de l'employé
+
+            # alloc parent holliday_type et tag inexistant
+            #########
+            # parent avec holliday_type #
+            # dans ces parents chercher l'employé
+            # supprimer et ajouter
+            #########
+
+
 
             for employee in employees:
+                if category_parents:
+                    emp_allocations = self.env['hr.leave.allocation']
+                    # GET ALL OTHER ALLOCATION FOR EMPLOYEE if category
+                    for category_parent in category_parents:
+                        if category_parent != self:
+                            emp_allocations |= self.env['hr.leave.allocation'].search([('employee_id', '=', employee.id),('id', 'in', category_parent.linked_request_ids.ids)])
+                    # ADD & DELETE
+                    for emp_allocation in emp_allocations:
+                        if emp_allocation.category_id not in employee.id.category_ids:
+                            remaining_day_from_old += emp_allocation.number_of_days
+                            emp_allocation.unlink()
+
                 # we test if the employee already has a related child
                 existing_child = self.env['hr.leave.allocation'].search([('employee_id', '=', employee.id),('id', 'in', self.linked_request_ids.ids)], limit=1)
                 # If there is a child, we edit it if the child is in draft, but we ensure to maintain the already accumulated number of days
@@ -70,18 +99,22 @@ class LeaveAllocation(models.Model):
                     if existing_child.state == 'draft': #if in draft, it means that we want to update it because we turned the parent back to draft
                         values = self._prepare_holiday_values(employee)
                         values.update({
-                            'number_of_days': existing_child.number_of_days,
+                            'number_of_days': existing_child.number_of_days + remaining_day_from_old,
                             'state': 'confirm',
                         })
                         existing_child.write(values)
                         childs += existing_child
                 
                 else: #we need to create a new one
+                    values = self._prepare_holiday_values(employee)
+                    values.update({
+                            'number_of_days': remaining_day_from_old
+                        })
                     childs += self.with_context(
                         mail_notify_force_send=False,
                         mail_activity_automation_skip=True,
                         mail_create_nosubscribe=True
-                    ).create(self._prepare_holiday_values(employee))
+                    ).create(values)
                 
             # TODO is it necessary to interleave the calls?
             childs.action_approve()

@@ -48,6 +48,8 @@ class Ticket(models.Model):
         compute='_get_name',
         reverse='_set_name',)
     
+    dynamic_description = fields.HTML()
+    
     resolution = fields.Char()
     behalf = fields.Boolean(string="Behalf")
     
