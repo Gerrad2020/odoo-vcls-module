@@ -88,8 +88,10 @@ class LeaveAllocation(models.Model):
                             emp_allocations |= self.env['hr.leave.allocation'].search([('employee_id', '=', employee.id),('id', 'in', category_parent.linked_request_ids.ids)])
                     # ADD & DELETE
                     for emp_allocation in emp_allocations:
-                        if emp_allocation.category_id not in employee.id.category_ids:
+                        if emp_allocation.category_id not in employee.category_ids:
                             remaining_day_from_old += emp_allocation.number_of_days
+                            emp_allocation.action_refuse()
+                            emp_allocation.action_draft()
                             emp_allocation.unlink()
 
                 # we test if the employee already has a related child
