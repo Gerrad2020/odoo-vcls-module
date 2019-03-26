@@ -10,7 +10,7 @@
 
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
 
-- Install the latest version of [PostGreSQL](https://www.openscg.com/bigsql/postgresql/installers.jsp/) (BigSQL version)
+- Install the latest version of [PostGreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) (EnterpriseDB installer)
 
 ![Screenshot postGreSQL webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pgweb.png)
 
