@@ -26,13 +26,17 @@ For the installation details, follow the step bellow:
 - You don't need to change the default port
 
 - After installation, follow the steps below to finalize the program configuration :
-    - Open pgAdmin4
+    - Open pgAdmin4 (it will be opened in your default browser)
     - On the "Connect to server" prompt, type your postgres password and check "Save Password" box
     - Create a new user
         - login: odoo
         - password: odoo
 
-![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pg2.png)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install2.JPG)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3.JPG)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install4.JPG)
+
+
 
 - Install the latest version of [NodeJS](https://nodejs.org/en/) (LTS for Windows x64 version)
     - Accept all the default settings
