@@ -1,5 +1,6 @@
 # Installing the Odoo Development Environment (Windows 10)
 #### Please ensure you have admin's rights on your laptop before following these steps.
+#### Ask the administrator for GitHub repository access before following these steps.
 #### Ctrl click the links as Github does not support open in new tab.
 
 ## Installing The Dependencies (1)
@@ -9,6 +10,7 @@
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
 - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/)
+    - Scroll the page until you find "Tools for Visual Studio 2017" & select "Build Tools for Visual Studio 2017"
     - Select all Windows build tools and Web & cloud build tools (except Office/Sharepoint build tools)
 
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
