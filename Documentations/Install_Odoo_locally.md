@@ -1,16 +1,20 @@
 # Install the Odoo Development Environment (Windows 10)
+#### ! Please ensure you have admin's rights on your laptop before
 ## Install dependencies (1)
 - Install the latest version of [Python](https://www.python.org/downloads/)
 
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
 - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/)
+    - Select all Windows build tools and Web & cloud build tools (except Office/Sharepoint build tools)
 
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
 
-- Install the latest version of [PostGreSQL](https://www.postgresql.org/download/windows/)
+- Install the latest version of [PostGreSQL](https://www.openscg.com/bigsql/postgresql/installers.jsp/) (BigSQL version)
 
 ![Screenshot postGreSQL webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pgweb.png)
+
+For the installation details, follow the step bellow:
 ![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
 
 - Open pgAdmin4
@@ -52,12 +56,6 @@ git clone https://github.com/odoo/enterprise.git
 git clone https://github.com/VCLS-org/odoo-vcls-module.git
 ```
 
-- Open odoo.conf (yourOdooPath/odoo/odoo.conf) and edit with a text editor the addons path :
-```
-[options]
-addons_path = YourOdooPath\odoo\addons,YourOdooPath\enterprise,YourOdooPath\odoo-vcls-module
-```
-
 ## Install dependencies (2)
 - Open a CMD
 - Go to your Odoo path:
@@ -72,13 +70,18 @@ npm install –g less
 
 - Install psycopg2
 ```
-pip easy_install psycopg2
+pip install psycopg2
+```
+
+- Install psutil
+```
+pip install psutil
 ```
 
 - Open requirements.txt at YourOdooPath/odoo/requirements.txt
 - Edit the file:
-    - remove psycopg2 as you already have it
-    - remove the optional Pillow, python-ldap, gevent and psutil because they require compilation
+    - remove psycopg2 & psutil as you already have it
+    - remove the optional Pillow, python-ldap and gevent because they require compilation
     - add pypiwin32 because it's needed under windows
 ```
 pypiwin32 ; sys_platform == ‘win32’
@@ -87,7 +90,7 @@ pypiwin32 ; sys_platform == ‘win32’
 - Go again to your CMD and naviguate to your Odoo path
 - Install everything in requirements.txt
 ```
-python install –r requirements.txt
+pip install –r requirements.txt
 ```
 
 ## Running Odoo for the first time
