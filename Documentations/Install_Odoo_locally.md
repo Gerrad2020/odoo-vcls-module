@@ -27,6 +27,7 @@ For the installation details, follow the step bellow:
 
 - After installation, follow the steps below to finalize the program configuration :
     - Open pgAdmin4
+    - On the "Connect to server" prompt, type your postgres password and check "Save Password" box
     - Create a new user
         - login: odoo
         - password: odoo
