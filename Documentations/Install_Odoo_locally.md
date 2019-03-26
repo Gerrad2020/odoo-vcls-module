@@ -1,7 +1,7 @@
 # Install the Odoo Development Environment (Windows 10)
 #### ! Please ensure you have admin's rights on your laptop before
 ## Install dependencies (1)
-- Install the latest version of [Python](https://www.python.org/downloads/){:target="_blank"}
+- Install the latest version of [Python](https://www.python.org/downloads/){:target="_blank" rel="noopener"}
 
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
