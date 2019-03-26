@@ -12,6 +12,7 @@
 - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/)
     - Scroll the page until you find "Tools for Visual Studio 2017" & select "Build Tools for Visual Studio 2017"
     - Select all Windows build tools and Web & cloud build tools (except Office/Sharepoint build tools)
+    - A restart will be required to finalize the installation
 
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
 
@@ -24,10 +25,11 @@ For the installation details, follow the step bellow:
     - password: KalpaPG
 - You don't need to change the default port
 
-- Open pgAdmin4
-- Create a new user
-    - login: odoo
-    - password: odoo
+- After installation, follow the steps below to finalize the program configuration :
+    - Open pgAdmin4
+    - Create a new user
+        - login: odoo
+        - password: odoo
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pg2.png)
 
@@ -37,6 +39,7 @@ For the installation details, follow the step bellow:
 - Install Git and GitHub desktop
     - [Git](https://git-scm.com/download)
     - [GitHub desktop](https://desktop.github.com/)
+    - Accept all the default settings for both
 
 ## Copy Odoo source files and VCLS source files
 - Create a new directory (it will store your Odoo files)
