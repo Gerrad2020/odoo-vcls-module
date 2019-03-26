@@ -1,7 +1,7 @@
 # Install the Odoo Development Environment (Windows 10)
 #### ! Please ensure you have admin's rights on your laptop before
 ## Install dependencies (1)
-- Install the latest version of [Python](https://www.python.org/downloads/)
+- Install the latest version of [Python](https://www.python.org/downloads/){:target="_blank"}
 
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
@@ -10,12 +10,14 @@
 
 ![Screenshot Visual Studio webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen%20vs.png)
 
-- Install the latest version of [PostGreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) (EnterpriseDB installer)
-
-![Screenshot postGreSQL webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install.JPG)
+- Install the latest version of [PostGreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) (EnterpriseDB installer) (Windows x86-64 version)
 
 For the installation details, follow the step bellow:
 ![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
+
+- For the database superuser please type the following (you'll be asked to enter your password later) :
+    - password: KalpaPG
+- You don't need to change the default port
 
 - Open pgAdmin4
 - Create a new user
@@ -24,9 +26,8 @@ For the installation details, follow the step bellow:
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pg2.png)
 
-- Install the latest version of [NodeJS](https://nodejs.org/en/)
-
-![Screenshot NodeJS webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_nodejs.png)
+- Install the latest version of [NodeJS](https://nodejs.org/en/) (LTS for Windows x64 version)
+    - Accept all the default settings
 
 - Install Git and GitHub desktop
     - [Git](https://git-scm.com/download)
