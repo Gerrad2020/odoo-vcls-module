@@ -1,0 +1,80 @@
+# Development guideline
+
+## In Python
+
+### How to write Models
+
+#### Template
+```python
+class aClass(models.Model):
+    ''' [What it should represent]
+    [Odoo name]
+    [Extended comment on the function]
+    '''
+    YOUR CODE HERE
+```
+#### Example
+```python
+class Employee(models.Model):
+    ''' An employee profile of the company
+    [Odoo name] hr.employee
+    [Comments]
+	This is a class which is supposed
+	to represent an employee within the company
+    '''
+    YOUR CODE HERE
+```
+
+### How to write new fields
+
+#### Template
+```python
+    # [specific information about the field]
+    aNewField = fields.aType(
+		parameter1,
+		parameter2)
+```
+#### Example
+```python
+    # Overwritten field
+	name = fields.Char(
+		string = ’Name’,
+		default = ’def’)
+```
+
+### How to write functions
+
+#### Template
+```python
+    @api.depends('value')
+    def function(a, b):
+        ''' [What does it do briefly]
+        [when should it be activated]
+        [parameters]
+        [used resources]
+        [returned value]
+        [Extended comment on the function]
+        '''
+        YOUR CODE HERE
+```
+#### Example
+```python
+    @api.depends('value')
+    def sum(a, b):
+    ''' Return the sum of a and b
+    [when] when value is changed
+    [in] a : number
+	[in] b : number
+    [use] none
+    [return] a + b
+	[return] b + a
+    [Comments]
+	This function return the sum
+	of two numbers
+    '''
+    if (a>b):
+ 		return a + b
+ 	else:
+		return b + a
+```
+
