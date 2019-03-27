@@ -3,9 +3,11 @@ VCLS customs set of modules.
 This includes :
 - [VCLS contact](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-contact)
 - [VCLS helpdesk](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-helpdesk)
-- [VCLS default module](https://github.com/VCLS-org/odoo-vcls-module)
+- [VCLS default module](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-module)
 - [VCLS hr](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-hr)
-- [VCLS theme](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-hr)
+- [VCLS theme](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-theme)
+- [VCLS CRM](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-crm)
+- [VCLS interfaces](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-interfaces)
 
 ### VCLS principal branches
 Branch name | Purpose
