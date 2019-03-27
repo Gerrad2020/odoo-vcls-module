@@ -7,7 +7,7 @@ This includes :
 - [VCLS hr](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-hr)
 - [VCLS theme](https://github.com/VCLS-org/odoo-vcls-module/tree/12.0-vcls-module/vcls-hr)
 
-### VCLS branches logic
+### VCLS principal branches
 Branch name | Purpose
 ----------- | -------
 12.0-vcls-module | This is our principal branch which is synchronized with our Odoo instance at https://vcls.odoo.com. Every changes in this branch will directly impact everyone in the company. For these reasons, only GitHub admin can do changes to this branch. It is strongly advised to not edit directly this branch but modify 12.0-vcls-master and then merge 12.0-vcls_master into 12.0-vcls-module.
