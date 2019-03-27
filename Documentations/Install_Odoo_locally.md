@@ -10,7 +10,7 @@
 ![Screenshot Python webpage](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_python.png)
 
 - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/)
-    - Scroll the page until you find "Tools for Visual Studio 2017" & select "Build Tools for Visual Studio 2017"
+    - Scroll the page until you find **Tools for Visual Studio 2017** & select **Build Tools for Visual Studio 2017**
     - Select all Windows build tools and Web & cloud build tools (except Office/Sharepoint build tools)
     - A restart will be required to finalize the installation
 
@@ -22,15 +22,15 @@ For the installation details, follow the step bellow:
 ![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
 
 - For the database superuser please type the following (you'll be asked to enter your password later) :
-    - password: KalpaPG
+    - password: **KalpaPG**
 - You don't need to change the default port
 
 - After installation, follow the steps below to finalize the program configuration :
     - Open pgAdmin4 (it will be opened in your default browser)
     - On the "Connect to server" prompt, type your postgres password and check "Save Password" box
     - Create a new user
-        - login: odoo
-        - password: odoo
+        - login: **odoo**
+        - password: **odoo**
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install2.JPG)
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s.JPG)
@@ -77,17 +77,17 @@ git clone https://github.com/VCLS-org/odoo-vcls-module.git
 cd YourOdooPath
 ```
 
-- Install Less using NodeJS:
+- Install **Less** using NodeJS:
 ```
 npm install –g less
 ```
 
-- Install psycopg2
+- Install **psycopg2**
 ```
 pip install psycopg2
 ```
 
-- Install psutil
+- Install **psutil**
 ```
 pip install psutil
 ```
@@ -125,6 +125,26 @@ python ./odoo-bin -w odoo -r odoo --addons-path=addons,../enterprise,../odoo-vcl
 
 ![Screenshot apps](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_apps.png)
 
+### Basics commands
+- Start the Odoo server
+```
+python odoo-bin -u -a
+```
 
+- Update a module & run Odoo
+```
+python odoo-bin -u "module-name"
+```
+
+- Stop the Odoo server
+```
+Ctrl + c
+```
+
+- Go to database manager
+```
+Type the link in your browser: 
+http://[your_laptop_name]:8069/web/database/manager
+```
 
 
