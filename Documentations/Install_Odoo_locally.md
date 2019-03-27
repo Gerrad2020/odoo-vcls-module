@@ -34,9 +34,6 @@ For the installation details, follow the step bellow:
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install2.JPG)
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s.JPG)
-![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install4.JPG)
-
-
 
 - Install the latest version of [NodeJS](https://nodejs.org/en/) (LTS for Windows x64 version)
     - Accept all the default settings
@@ -59,11 +56,14 @@ For the installation details, follow the step bellow:
 ```
 git clone https://github.com/odoo/odoo.git
 ```
+![GitHub desktop](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/github_desktop.JPG)
 
 - (If possible) Clone the [Odoo Enterprise repository](https://github.com/odoo/enterprise.git):
 ```
 git clone https://github.com/odoo/enterprise.git
 ```
+
+
 
 - Clone the [VCLS repository](https://github.com/VCLS-org/odoo-vcls-module.git):
 ```
