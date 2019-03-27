@@ -1,4 +1,4 @@
-# Development guideline
+# Development guidelines
 
 ## In Python
 
