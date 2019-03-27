@@ -19,7 +19,7 @@
 - Install the latest version of [PostGreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) (EnterpriseDB installer) (Windows x86-64 version)
 
 For the installation details, follow the step bellow:
-![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall.png)
+![Screenshot postGreSQL installer](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_pginstall%20-%20Copy.png)
 
 - For the database superuser please type the following (you'll be asked to enter your password later) :
     - password: **KalpaPG**
