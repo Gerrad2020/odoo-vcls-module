@@ -58,6 +58,7 @@ For the installation details, follow the step bellow:
 git clone https://github.com/odoo/odoo.git
 ```
 ![GitHub desktop](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/github_desktop.JPG)
+![GitHub desktop](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/git_add_repo.JPG)
 
 - (If possible) Clone the [Odoo Enterprise repository](https://github.com/odoo/enterprise.git):
 ```
