@@ -1,0 +1,32 @@
+# Introduction
+## Kalpa Project
+Kalpa project is aimed to provide a customized and improved Odoo platform for the VCLS business use.
+
+The VCLS Odoo platform includes a dashboard and the available applications can be accessed from here depending on the user access rights.
+
+The VCLS Odoo platform currently includes these applications:
+
+1.	Tickets - customized via vcls-helpdesk module
+2.	Contacts - customized via vcls-contact module
+3.	Employees - customized via vcls-hr and vcls-interfaces modules
+4.	Leaves - customized via vcls-hr module
+5.	Discuss - no customization 
+6.	Project - no customization
+7.	Surveys - no customization
+8.  Website - no customization
+
+The visual setting of the platform is customized via the vcls-theme module
+
+The published applications are designed to provide a simple user interface to minimize the training needs of the platform.
+
+The kanban view provides drag and drop functionality for selected group of fields.
+
+Various filters per fields and groups can be applied to view a subset of records.
+
+## Interfaces
+
+There is an Azure AD interface implemented to enable SSO functionality. 
+This is achieved via the userodoo_microsoft_account module with the oAuth protocol.
+
+
+Email notification is implemented hence all users are notified via email for messages and assignment notifications unless their notification setting is changed.
