@@ -31,9 +31,11 @@ For the installation details, follow the step bellow:
     - Create a new user
         - login: **odoo**
         - password: **odoo**
+        - Add the following privileges : "Can login ?" & "Superuser"
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install2.JPG)
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s.JPG)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/pgadmin_superuser.PNG)
 
 - Install the latest version of [NodeJS](https://nodejs.org/en/) (LTS for Windows x64 version)
     - Accept all the default settings
@@ -73,7 +75,7 @@ git clone https://github.com/VCLS-org/odoo-vcls-module.git
 ```
 
 ## Install dependencies (2)
-- Open a CMD
+- Open a Command Prompt
 - Go to your Odoo path:
 ```
 cd YourOdooPath
@@ -97,26 +99,22 @@ pip install psutil
 - Open requirements.txt at YourOdooPath/odoo/requirements.txt
 - Edit the file:
     - remove psycopg2 & psutil as you already have it
-    - remove the optional Pillow, python-ldap and gevent because they require compilation
-    - add pypiwin32 because it's needed under windows
-```
-pypiwin32 ; sys_platform == ‘win32’
-```
+    - remove the optional all gevent, Pillow and pyldap because they require compilation
 
-- Go again to your CMD and naviguate to your Odoo path
-- Install everything in requirements.txt
+- Go again to your Command Prompt and naviguate to your Odoo path
+- Launch the command below to install the modules given in requirements.txt
 ```
 pip install –r requirements.txt
 ```
 
 ## Running Odoo for the first time
-- Open a CMD and go to YourOdooPath/odoo
+- Verify that you are still on the Odoo path
 - Run Odoo in a local instance:
 ```
 python ./odoo-bin -w odoo -r odoo --addons-path=addons,../enterprise,../odoo-vcls-module
 ```
 
-![Screenshot cmd](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_cmd.png)
+![Screenshot Command Prompt](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_cmd.png)
 
 - Open any web browser and type the address of your HTTP server:
     - You will be asked to create a new database:
