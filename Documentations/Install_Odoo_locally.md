@@ -34,8 +34,8 @@ For the installation details, follow the step bellow:
         - Add the following privileges : "Can login ?" & "Superuser"
 
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install2.JPG)
-![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s1.JPG)
-![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s2.JPG)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s1.jpg)
+![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/PostgreSQL_install3s2.jpg)
 ![Screenshot pgadmin4](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/pgadmin_superuser.PNG)
 
 - Install the latest version of [NodeJS](https://nodejs.org/en/) (LTS for Windows x64 version)
