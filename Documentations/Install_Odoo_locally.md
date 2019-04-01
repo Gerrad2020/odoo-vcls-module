@@ -123,7 +123,8 @@ python ./odoo-bin -w odoo -r odoo --addons-path=addons,../enterprise,../odoo-vcl
 
 ![Screenshot database](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_db.png)
 
-- Go to Apps and install all VCLS modules (error may occur because of module’s dependencies):
+- Go to Apps and install first contacts module
+- Go to Apps and install vcls-installer module (it will install all VCLS apps in one go)
 
 ![Screenshot apps](https://github.com/VCLS-org/odoo-vcls-module/blob/12.0-Documentations/Documentations/img/screen_apps.png)
 
