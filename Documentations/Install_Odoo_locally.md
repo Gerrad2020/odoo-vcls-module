@@ -1,4 +1,4 @@
-# Installing the Odoo Development Environment (Windows 10)
+# Installing the Odoo Development Environment (Win 10)
 #### Please ensure you have admin's rights on your laptop before following these steps.
 #### Ask the administrator for GitHub repository access before following these steps.
 #### Ctrl click the links as Github does not support open in new tab.
