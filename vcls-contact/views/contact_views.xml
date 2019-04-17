@@ -9,9 +9,15 @@
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <form string="Partners">
-                        <header>
-                            <field name="stage" widget="statusbar" options="{'clickable': '1'}"/> 
-                        </header>
+                    <header>
+                         <!-- Button evaluations -->
+                        <button name="evaluations" string="Evaluations" type="object" icon="fa-legal" attrs=""/>
+                        
+                        <!-- Button purchase -->
+                        <button name="purchase" string="Purchase orders" type="object" icon="fa-trophy" attrs=""/>
+                        
+                        <field name="stage" widget="statusbar" options="{'clickable': '1'}"/> 
+                    </header>
                     <sheet>
                         <div id="o_contact_container">
                                 <div id="o_contact_main">

@@ -120,3 +120,12 @@ class ContactExt(models.Model):
     def _reset_bounce(self):
         for contact in self:
             contact.message_bounce = 0
+    
+    def purchase(self):
+        return {
+            'name': 'Purchase Orders',
+            'view_type': 'form',
+            'view_mode': 'kanban,tree,form',
+            'res_model': 'purchase.order',
+            'type': 'ir.actions.act_window',
+        }
