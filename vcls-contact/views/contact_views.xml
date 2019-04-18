@@ -9,8 +9,8 @@
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <form string="Partners">
-                        <header>
-                            <field name="stage" widget="statusbar" options="{'clickable': '1'}"/> 
+                        <header>                    
+                            <field name="stage" widget="statusbar" options="{'clickable': '1'}"/>
                         </header>
                     <sheet>
                         <div id="o_contact_container">
@@ -22,33 +22,40 @@
                                             <field name="name" placeholder="Contact First Name then Family Name" required="True"/>
                                         </h1>
                                     </div>
+                                    
+                                    <field name="category_id" string='' widget="many2many_tags" options="{'no_create_edit': True}" placeholder="e.g. FR - Cadre"/>
                                     <!-- the header is accessible to everyone -->
                                     <group>
                                             <!-- NOT company -->
-                                            <group string="Main information" attrs="{'invisible': [('is_company', '=', True)]}">
-                                                <field name="email"/>
-                                                <field name="phone"/>
+                                            <group attrs="{'invisible': [('is_company', '=', True)]}">
+                                                <div>
+                                                    <field name="city" string=""/>
+                                                    <string>, </string>
+                                                    <field name="country_id" string=""/>
+                                                </div>
                                             </group>
-
                                             <!-- is_company -->
-                                            <group string="Main information" attrs="{'invisible': [('is_company', '=', False)]}">
-                                                <field name="category_id"/>
-                                                <field name="website" widget="url"/>
-                                                <field name="city" string="City"/>
-                                                <field name="country_id" string="Country"/>
+                                            <group attrs="{'invisible': [('is_company', '=', False)]}">
+                                                <div>
+                                                    <field name="city" string=""/>
+                                                    <string>, </string>
+                                                    <field name="country_id" string=""/>
+                                                </div>
                                                 <field name="is_company" invisible="1"/>
                                                 <field name="active" invisible="1" />
                                             </group>
 
-                                            <group string="Sharepoint">
-                                                <field name="create_folder" />
+                                            <group>
+                                                <field name="create_folder" invisible='1'/>
+                                                <div class="oe_button_box" name="button_box">
+                                                    <button name = "create_folder_btn" string = "Create Sharepoint Folder" type = "object" attrs="{'invisible': [('create_folder', '=', False)]}" />
+                                                </div>
                                                 <field name="custom_sp_link" attrs="{'invisible': [('create_folder', '=', False)]}" widget="url"/>
                                                 <field name="sharepoint_folder" attrs="{'invisible': ['|',('custom_sp_link','!=',False),('create_folder','=',False)]}" widget="url"/>
                                             </group>
-                                        
-                                            <group string="Sales" name="sale" priority="1">
-                                                <field name="customer"/>
-                                                <field name="user_id"/>
+                                            <group attrs="{'invisible': [('is_company', '=', True)]}" >
+                                                <field name="email"/>    
+                                                <field name="phone"/>
                                             </group>
                                     </group>
                                 </div>
@@ -204,7 +211,6 @@
                                 <!-- <page name="job_information" string="Job Information" attrs="{'invisible': [('access_level', 'not in', ['hr'])]}">-->
                                     <group>
                                         <group string="General Information">
-                                            <field name="category_id" widget="many2many_tags" options="{'no_create_edit': True}" placeholder="e.g. FR - Cadre" groups="hr.group_hr_user"/>
                                             <field name="function"/>
                                             <field name="parent_id" string='Line Manager'/>
                                         </group>

@@ -135,3 +135,8 @@ class ContactExt(models.Model):
     def _reset_bounce(self):
         for contact in self:
             contact.message_bounce = 0
+
+        
+    def create_folder_btn(self):
+        for contact in self:
+            contact.create_folder = True
