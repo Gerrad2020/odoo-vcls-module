@@ -132,3 +132,16 @@ class ContactExt(models.Model):
             'res_model': 'purchase.order',
             'type': 'ir.actions.act_window',
         }
+
+    def evaluations(self):
+        partner_id = self.env['res.partner'].search([('id','=',self.id)]).id
+
+        return {
+            'name': 'Evaluations',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'survey.survey',
+            'target' : 'new',
+            'type': 'ir.actions.act_window',
+            #'context': "{{'default_partner_id': {}}}".format(partner_id),
+        }
