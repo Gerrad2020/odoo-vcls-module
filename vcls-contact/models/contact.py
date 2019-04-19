@@ -3,6 +3,17 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
+class CountryGroup(models.Model):
+    _inherit = 'res.country.group'
+
+    group_type = fields.Selection([
+        ('BD', 'Business Development'),
+        ],
+        string='Group Type',
+        track_visibility='onchange',
+        default=False,
+    ) 
+
 class ContactExt(models.Model):
 
     _inherit = 'res.partner'
@@ -95,7 +106,6 @@ class ContactExt(models.Model):
         string = 'AltName',
     )
 
-
     ###################
     # COMPUTE METHODS #
     ###################
@@ -109,17 +119,15 @@ class ContactExt(models.Model):
     @api.depends('country_id')
     def _compute_country_group(self):
         for contact in self:
-            pass
-            """# please dev here
-            groups = contact.country_id.country_group_ids.filtered(#group_type == 'BD')
+            groups = contact.country_id.country_group_ids.filtered([('group_type','=','BD')])
             if groups:
-                contact.country_group_id = groups[0]"""
-    
+                contact.country_group_id = groups[0]
+
     def _compute_completion_ratio(self):
         for contact in self:
             pass
             """ This estimator is related to the type of contact."""
-    
+
     @api.depends('category_id','create_folder','altname')
     def _compute_sharepoint_folder(self):
         for contact in self:
@@ -135,8 +143,3 @@ class ContactExt(models.Model):
     def _reset_bounce(self):
         for contact in self:
             contact.message_bounce = 0
-
-        
-    def create_folder_btn(self):
-        for contact in self:
-            contact.create_folder = True
