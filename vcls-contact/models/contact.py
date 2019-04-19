@@ -143,3 +143,23 @@ class ContactExt(models.Model):
     def _reset_bounce(self):
         for contact in self:
             contact.message_bounce = 0
+            
+    def create_folder_btn(self):
+        for contact in self:
+            contact.create_folder = True
+    
+    def open_folder_btn(self):
+        for contact in self:
+            if contact.custom_sp_link is not False:
+                url = contact.custom_sp_link
+            elif contact.sharepoint_folder is not False:
+                url = contact.sharepoint_folder
+            else:
+                return {}
+        return {
+                  'name'     : 'Go to website',
+                  'res_model': 'ir.actions.act_url',
+                  'type'     : 'ir.actions.act_url',
+                  'target'   : 'current',
+                  'url'      : url
+               }
