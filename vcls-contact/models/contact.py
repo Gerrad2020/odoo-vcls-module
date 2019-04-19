@@ -3,6 +3,17 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
+class CountryGroup(models.Model):
+    _inherit = 'res.country.group'
+
+    group_type = fields.Selection([
+        ('BD', 'Business Development'),
+        ],
+        string='Group Type',
+        track_visibility='onchange',
+        default=False,
+    ) 
+
 class ContactExt(models.Model):
 
     _inherit = 'res.partner'
@@ -48,6 +59,13 @@ class ContactExt(models.Model):
         string = "Create Sharepoint Folder",
     )
 
+    ### THe objective of this field is to assist responsible roles in contact completion exercise and maintain a good data quality
+    completion_ratio = fields.Float(
+        string = "Data Completion Estimation",
+        compute = '_compute_completion_ratio',
+        default = 0.0,
+    )
+
     #Contact fields
     fax = fields.Char()
 
@@ -88,7 +106,6 @@ class ContactExt(models.Model):
         string = 'AltName',
     )
 
-
     ###################
     # COMPUTE METHODS #
     ###################
@@ -102,12 +119,15 @@ class ContactExt(models.Model):
     @api.depends('country_id')
     def _compute_country_group(self):
         for contact in self:
-            pass
-            """# please dev here
-            groups = contact.country_id.country_group_ids.filtered(#group_type == 'BD')
+            groups = contact.country_id.country_group_ids.filtered([('group_type','=','BD')])
             if groups:
-                contact.country_group_id = groups[0]"""
-    
+                contact.country_group_id = groups[0]
+
+    def _compute_completion_ratio(self):
+        for contact in self:
+            pass
+            """ This estimator is related to the type of contact."""
+
     @api.depends('category_id','create_folder','altname')
     def _compute_sharepoint_folder(self):
         for contact in self:
