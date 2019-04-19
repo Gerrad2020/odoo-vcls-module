@@ -125,7 +125,11 @@ class ContactExt(models.Model):
 
     def _compute_completion_ratio(self):
         for contact in self:
-            pass
+            if contact.category_id == 'category_account':
+                # need help 
+                pass
+            elif contact.category_id == 'category_supplier':
+                pass
             """ This estimator is related to the type of contact."""
 
     @api.depends('category_id','create_folder','altname')
