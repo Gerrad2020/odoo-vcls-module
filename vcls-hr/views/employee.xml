@@ -372,6 +372,31 @@
 
         </field>
     </record>
+    <record id="crm_opportunity_view_dashboard" model="ir.ui.view">
+            <field name="name">hr.employee.view.dashboard</field>
+            <field name="model">hr.employee</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <dashboard>
+                <group>
+                    <group>
+                        <aggregate name="head_counts" string="Head Counts" group_operator="count" field="id" measure="__count__"/>
+                        <!-- <aggregate name="prorated_fte" field="resource_calendar_id" invisible="1"/>
+                        <aggregate name="prorated_fte1" field=""/> -->
+                        <!-- <formula name="prorated_revenue" string="Prorated Revenue" value="record.prorated_fte"/> -->
+                        <!-- <aggregate name="salary_mass" string="Salary Mass" group_operator="count" field="contract_id.fulltime_salary" measure="__count__" widget="monetary"/> -->
+
+
+                    </group>
+                    <group col="1">
+                        <widget name="pie_chart" title="Ratio Gender" attrs="{'groupby': 'gender'}"/>
+                        <widget name="pie_chart" title="Employee per Departement" attrs="{'groupby': 'department_id'}"/>
+                    </group>
+                </group>
+                </dashboard>
+            </field>
+        </record>
+        
 
     </data>
 </odoo>

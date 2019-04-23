@@ -273,7 +273,14 @@
                 (0, 0, {'view_mode': 'form', 'view_id': ref('view_form_job_for_employee')}),
             ]"/>
         </record>
-        
+
+        <record model="ir.actions.act_window" id="action_admin_dashboard">
+            <field name="name">Dashboard</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">dashboard</field>
+            <field name="view_id" ref="crm_opportunity_view_dashboard"/>
+        </record>
+
         <menuitem
             id="menu_hr_job"
             name="Jobs"
@@ -331,7 +338,12 @@
             action="resource.action_resource_calendar_form"
             sequence="24"
         />
-        
+        <menuitem 
+			name="Dashboard" 
+			parent="hr.menu_hr_root" 
+			id="menu_admin_dashboard" 
+			action="action_admin_dashboard" 
+			sequence="13" />
        
         
     </data>

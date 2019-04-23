@@ -275,19 +275,6 @@
             <field name="view_mode">kanban,tree,form,activity</field>
         </record>
 
-        <record id="crm_opportunity_view_dashboard" model="ir.ui.view">
-            <field name="name">crm.lead.view.dashboard</field>
-            <field name="model">crm.lead</field>
-            <field name="mode">primary</field>
-            <field name="arch" type="xml">
-                <dashboard>
-                <group>
-
-                
-                </dashboard>
-            </field>
-        </record>
-
     </data>
 </odoo>
     
