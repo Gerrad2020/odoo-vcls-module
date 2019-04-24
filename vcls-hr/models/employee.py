@@ -276,7 +276,12 @@ class Employee(models.Model):
         string='Medical Policy Number',
         compute='_compute_medical_policy_number',
         inverse='_set_medical_policy_number')
-    
+
+
+
+    ### Resource calendar Information
+    effective_hours = fields.Float('resource_calendar_id.effective_hours')
+
     #Generic job info (i.e. not linked to the job position object nor the employee contract)
     employee_seniority_date = fields.Date(
         string='Employee Seniority Date',
@@ -1234,6 +1239,20 @@ class Employee(models.Model):
             else:
                 rec.confidential_id[0].write({'notes': self.notes})
     
+    @api.depends('resource_calendar_id.effective_hours')
+    def _compute_effective_hours(self):
+        for rec in self:
+            if rec.resource_calendar_id:
+                rec.effective_hours = rec.resource_calendar_id[0]['effective_hours']
+            else:
+                rec.effective_hours = False
+    
+    def _set_effective_hours(self):
+        for rec in self:
+            if not rec.resource_calendar_id:
+                self.env['hr.employee.resource_calendar_id'].create({'employee_id':rec.id, 'effective_hours': self.effective_hours})
+            else:
+                rec.resource_calendar_id[0].write({'effective_hours': self.effective_hours})
     # End of Personal information
     
     # Job information
