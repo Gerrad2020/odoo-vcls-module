@@ -20,4 +20,4 @@ class HelpdeskTestCase(TransactionCase):
                 'ticket_type_id' : self.env['helpdesk.ticket.type'].search([('name', '=', 'Service Request')], limit=1).id,
                 'dynamic_description' : 'I have a problem, please help !',
             })
-        self.assertEqual(record.dynamic_description, '<p>I have a problem, plzfzefeaease help !</p>')
+        self.assertEqual(record.dynamic_description, '<p>I have a problem, pls help !</p>')

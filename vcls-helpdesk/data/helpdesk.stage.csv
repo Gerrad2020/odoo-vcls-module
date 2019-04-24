@@ -1,0 +1,9 @@
+id,name,sequence
+helpdesk.stage_new,New,0
+__export__.helpdesk_stage_11_69bea720,New,0
+__export__.helpdesk_stage_8_c3cb4444,Assigned,1
+helpdesk.stage_in_progress,In Progress,2
+__export__.helpdesk_stage_9_1ddd697e,Awaiting Reply,3
+helpdesk.stage_solved,Solved,4
+helpdesk.stage_cancelled,Cancelled,5
+__export__.helpdesk_stage_10_30a17dee,Closed,6

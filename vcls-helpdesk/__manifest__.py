@@ -50,6 +50,7 @@
         ###################
         # DEFAULT RECORDS #
         ###################
+        'data/helpdesk.stage.csv',
         'data/helpdesk.ticket.type.csv',
         
     ],
