@@ -6,7 +6,7 @@ class HRTestCase(TransactionCase):
         super(HRTestCase, self).setUp()
         # Setting up the environnment
         # Create an employee
-        logging.info('I told you so')
+        logging.error('I told you so')
         demo_user =  self.env.ref('base.user_demo')
         # demo_user.groups_id |= self.env.ref('')
         employee_model = self.env['hr.employee'].sudo(demo_user)
