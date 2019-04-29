@@ -122,15 +122,39 @@ class ContactExt(models.Model):
             groups = contact.country_id.country_group_ids.filtered([('group_type','=','BD')])
             if groups:
                 contact.country_group_id = groups[0]
-
+    @api.depends('user_id','name','email','website','street','city','state_id','zip','country_id','phone','sharepoint_folder','currency_id','company_type','category_id')
     def _compute_completion_ratio(self):
         for contact in self:
-            if contact.category_id == 'category_account':
-                # need help 
-                pass
-            elif contact.category_id == 'category_supplier':
-                pass
-            """ This estimator is related to the type of contact."""
+            percentage = 0.0
+            if contact.user_id:
+                percentage += 22
+            if contact.name:
+                percentage += 22
+            if contact.email:
+                percentage += 22
+            if contact.website:
+                percentage += 4
+            if contact.street:
+                percentage += 3
+            if contact.city:
+                percentage += 3
+            if contact.state_id:
+                percentage += 3
+            if contact.zip:
+                percentage += 3
+            if contact.country_id:
+                percentage += 3
+            if contact.phone:
+                percentage += 3
+            if contact.sharepoint_folder:
+                percentage += 3
+            if contact.currency_id:
+                percentage += 3 
+            if contact.company_type:
+                percentage += 3
+            if contact.category_id:
+                percentage += 3
+            contact.completion_ratio = percentage
 
     @api.depends('category_id','create_folder','altname')
     def _compute_sharepoint_folder(self):
