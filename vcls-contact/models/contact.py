@@ -128,6 +128,14 @@ class ContactExt(models.Model):
         default = False,
         store = True,
     )
+    
+    see_executive = fields.Boolean(
+        compute = '',
+        default = False)
+
+    see_bd_team = fields.Boolean(
+        compute = '',
+        default = False)
 
     ###################
     # COMPUTE METHODS #

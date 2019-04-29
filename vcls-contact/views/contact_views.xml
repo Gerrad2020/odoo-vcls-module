@@ -334,7 +334,27 @@
             <field name="res_model">res.partner</field>
             <field name="view_mode">kanban,tree,form,activity</field>
         </record>
+        <!-- used to limit the visibility of the record to different Security groups -->
 
+        <record model="ir.actions.act_window" id="action_security_executive">
+            <field name="name">Executive</field>
+            <field name="domain" eval="[('see_executive','=',True)]"/>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_security_bdteam">
+            <field name="name">BD Team</field>
+            <field name="domain" eval="[('see_bd_team','=',True)]"/>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_security_all">
+            <field name="name">All</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+        </record>
     </data>
 </odoo>
     
