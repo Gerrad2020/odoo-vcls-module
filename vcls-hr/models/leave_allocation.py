@@ -193,7 +193,7 @@ class LeaveAllocation(models.Model):
                     # mean number of hours set on the employee's calendar
                     days_to_give = days_to_give / (holiday.employee_id.resource_calendar_id.hours_per_day or HOURS_PER_DAY)
 
-                values['number_of_days'] = holiday.number_of_days + days_to_give * prorata
+                values['number_of_days'] = round(holiday.number_of_days + days_to_give * prorata,2)
                 debug['days'] = holiday.number_of_days
                 if holiday.accrual_limit > 0:
                     values['number_of_days'] = min(values['number_of_days'], holiday.accrual_limit)
@@ -203,7 +203,7 @@ class LeaveAllocation(models.Model):
 
             holiday.write(values)
 
-            raise UserError("{} >>> {}".format(debug,values))
+            #raise UserError("{} >>> {}".format(debug,values))
     
     #we don't want LM approval for allocations
     def _get_responsible_for_approval(self):
