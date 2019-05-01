@@ -119,7 +119,7 @@ class LeaveAllocation(models.Model):
         debug = {}
         values = {}
         delta = relativedelta(days=0)
-        today = fields.Date.from_string(fields.Date.today()) - relativedelta(days=1)
+        today = fields.Date.from_string(fields.Date.today())
         debug['today'] = today
         month_start = today.replace(day=1)
         month_end = today.replace(day=1,month=(today.month + 1)) - relativedelta(days=1)
