@@ -115,10 +115,6 @@ class LeaveAllocation(models.Model):
             Method called by the cron task in order to increment the number_of_days when
             necessary.
         """
-        holidays = self.search([('accrual', '=', True), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
-                                '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
-                                '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
-        
         #COMPUTE USEFUL DATE VALUES
         debug = {}
         delta = relativedelta(days=0)
@@ -127,6 +123,11 @@ class LeaveAllocation(models.Model):
         month_start = datetime.combine(today.replace(day=1), time(0, 0, 0))
         month_end = datetime.combine(today.replace(day=1,month=(today.month + 1)), time(0, 0, 0)) - relativedelta(days=1)
         debug['today_mod'] = today
+
+        #GET VALID ALLOCATIONS
+        holidays = self.search([('accrual', '=', True), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
+                                '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
+                                '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
 
         #LOOP IN ALL HOLIDAYS FOUND
         for holiday in holidays:
