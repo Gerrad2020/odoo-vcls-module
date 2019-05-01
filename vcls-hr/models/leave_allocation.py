@@ -117,11 +117,14 @@ class LeaveAllocation(models.Model):
         """
         #COMPUTE USEFUL DATE VALUES
         debug = {}
+        values = {}
         delta = relativedelta(days=0)
-        today = fields.Date.from_string(fields.Date.today())
+        today = fields.Date.from_string(fields.Date.today()) - relativedelta(days=1)
         debug['today'] = today
-        month_start = datetime.combine(today.replace(day=1), time(0, 0, 0))
-        month_end = datetime.combine(today.replace(day=1,month=(today.month + 1)), time(0, 0, 0)) - relativedelta(days=1)
+        month_start = today.replace(day=1)
+        month_end = today.replace(day=1,month=(today.month + 1)) - relativedelta(days=1)
+        debug['start'] = month_start
+        debug['end'] = month_end
         
         #GET VALID ALLOCATIONS
         holidays = self.search([('accrual', '=', True), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
@@ -132,12 +135,14 @@ class LeaveAllocation(models.Model):
         for holiday in holidays:
             
             values = {}
+            debug['employee']=holiday.employee_id.name
+            debug['leave_type']=holiday.holiday_status_id.name
 
             ### NEXTCALL UPDATE: To the end of the current month if interval is month.
             if holiday.interval_unit == 'months' and holiday.interval_number==1:
                  values['nextcall'] = month_end
-                 period_start = month_start
-                 period_end = month_end
+                 period_start = datetime.combine(month_start, time(0, 0, 0))
+                 period_end = datetime.combine(month_end, time(0, 0, 0))
 
             else :
                 delta = relativedelta(days=0)
@@ -184,13 +189,14 @@ class LeaveAllocation(models.Model):
                     days_to_give = days_to_give / (holiday.employee_id.resource_calendar_id.hours_per_day or HOURS_PER_DAY)
 
                 values['number_of_days'] = holiday.number_of_days + days_to_give * prorata
+                debug['days'] = holiday.number_of_days
                 if holiday.accrual_limit > 0:
                     values['number_of_days'] = min(values['number_of_days'], holiday.accrual_limit)
-
-                holiday.write(values)
-
+                
             else:
                 debug['executed'] = False
+
+            holiday.write(values)
 
             raise UserError("{} >>> {}".format(debug,values))
     
