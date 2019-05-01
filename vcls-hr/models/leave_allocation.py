@@ -121,7 +121,7 @@ class LeaveAllocation(models.Model):
                                 '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
                                 '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
         
-        raise UserError("{} | {}".format(len(holidays),holidays.mapped('employee_id.name')))
+        #raise UserError("{} | {}".format(len(holidays),holidays.mapped('employee_id.name')))
 
         for holiday in holidays:
             values = {}
@@ -132,11 +132,16 @@ class LeaveAllocation(models.Model):
             if holiday.interval_unit == 'months' and holiday.interval_number==1:
                 period_start = datetime.combine(today.replace(day=1), time(0, 0, 0))
                 period_end = datetime.combine(today.replace(day=1,month=(today.month + 1)), time(0, 0, 0)) - relativedelta(days=1)
+
+                raise UserError("{} | {} to {}".format(holiday.employee_id.name,period_start,period_end))
                 
                 #if this is the 1st execution for this holiday (i.e. nexcall = False), then we postpone to the end of current month
                 if not holiday.nextcall:
                     values['nextcall'] = period_end
                     holiday.write(values)
+
+                    raise UserError("{} | {} >> {}".format(holiday.employee_id.name,holiday.nextcall,values))
+
                     continue
                 #if there's a nextcall, it means that today is the last day of the month
                 else:
