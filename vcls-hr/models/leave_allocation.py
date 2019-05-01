@@ -115,17 +115,44 @@ class LeaveAllocation(models.Model):
             Method called by the cron task in order to increment the number_of_days when
             necessary.
         """
-        today = fields.Date.from_string(fields.Date.today())
-
         holidays = self.search([('accrual', '=', True), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
                                 '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
                                 '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
         
-        #raise UserError("{} | {}".format(len(holidays),holidays.mapped('employee_id.name')))
+        #COMPUTE USEFUL DATE VALUES
+        debug = {}
+        delta = relativedelta(days=0)
+        today = fields.Date.from_string(fields.Date.today())
+        debug['today'] = today
+        month_start = datetime.combine(today.replace(day=1), time(0, 0, 0))
+        month_end = datetime.combine(today.replace(day=1,month=(today.month + 1)), time(0, 0, 0)) - relativedelta(days=1)
+        debug['today_mod'] = today
 
+        #LOOP IN ALL HOLIDAYS FOUND
         for holiday in holidays:
+            
             values = {}
 
+            ### NEXTCALL UPDATE: To the end of the current month if interval is month.
+            if holiday.interval_unit == 'months' and holiday.interval_number==1:
+                 values['nextcall'] = month_end
+                 period_start = month_start
+                 period_end = month_end
+
+            else :
+                if holiday.interval_unit == 'weeks':
+                    delta = relativedelta(weeks=holiday.interval_number)
+                if holiday.interval_unit == 'month':
+                    delta = relativedelta(months=holiday.interval_number)
+                if holiday.interval_unit == 'years':
+                    delta = relativedelta(years=holiday.interval_number)
+                    
+                values['nextcall'] = (holiday.nextcall if holiday.nextcall else today) + delta
+                period_start = datetime.combine(today, time(0, 0, 0)) - delta
+                period_end = datetime.combine(today, time(0, 0, 0))     
+
+            raise UserError("{} >>> {}".format(debug,values))
+            """
             delta = relativedelta(days=0)
             
             #in case of months, we define the period start as the 1st day of the month and the period end the last day of the month       
@@ -137,17 +164,16 @@ class LeaveAllocation(models.Model):
                 if not holiday.nextcall:
                     values['nextcall'] = period_end
                     holiday.write(values)
-
-                    raise UserError("{} | {} NEW {}".format(holiday.employee_id.name,holiday.nextcall,values))
+                    #raise UserError("{} | {} NEW {}".format(holiday.employee_id.name,holiday.nextcall,values))
                     continue
 
                 #if there's a nextcall, it means that today is the last day of the month
                 else:
                     values['nextcall'] = datetime.combine(today.replace(day=1,month=(today.month + 2)), time(0, 0, 0)) - relativedelta(days=1)
-                    raise UserError("{} | {} ALREADY {}".format(holiday.employee_id.name,holiday.nextcall,values))
+                    raise UserError("{} | {} ALREADY {}".format(holiday.employee_id.name,holiday.nextcall,values))"""
 
                 
-            else :
+            """else :
                 if holiday.interval_unit == 'weeks':
                     delta = relativedelta(weeks=holiday.interval_number)
                 if holiday.interval_unit == 'month':
@@ -158,9 +184,9 @@ class LeaveAllocation(models.Model):
                 values['nextcall'] = (holiday.nextcall if holiday.nextcall else today) + delta
                 period_start = datetime.combine(today, time(0, 0, 0)) - delta
                 period_end = datetime.combine(today, time(0, 0, 0)) 
-                raise UserError('nextcall %s' % (period_end))
+                raise UserError('nextcall %s' % (period_end))"""
                 
-            # We have to check when the employee has started
+            """# We have to check when the employee has started
             # in order to not allocate him/her too much leaves
             creation_date = fields.Datetime.from_string(holiday.employee_id.employee_start_date)
 
@@ -188,7 +214,7 @@ class LeaveAllocation(models.Model):
             if holiday.accrual_limit > 0:
                 values['number_of_days'] = min(values['number_of_days'], holiday.accrual_limit)
 
-            holiday.write(values)
+            holiday.write(values)"""
     
     #we don't want LM approval for allocations
     def _get_responsible_for_approval(self):
