@@ -140,9 +140,10 @@ class LeaveAllocation(models.Model):
 
             ### NEXTCALL UPDATE: To the end of the current month if interval is month.
             if holiday.interval_unit == 'months' and holiday.interval_number==1:
-                 values['nextcall'] = month_end
-                 period_start = datetime.combine(month_start, time(0, 0, 0))
-                 period_end = datetime.combine(month_end, time(0, 0, 0))
+                vcls_accrual = True
+                values['nextcall'] = month_end
+                period_start = datetime.combine(month_start, time(0, 0, 0))
+                period_end = datetime.combine(month_end, time(0, 0, 0))
 
             else :
                 delta = relativedelta(days=0)
@@ -181,6 +182,10 @@ class LeaveAllocation(models.Model):
                 debug['left'] = left
                 debug['prorata'] = prorata
                 days_to_give = holiday.number_per_interval
+                
+                #we add one more month to the nextcall because we have executed the accrual
+                if vcls_accrual:
+                    values['nextcall'] = today.replace(day=1,month=(today.month + 2)) - relativedelta(days=1)
 
                 if holiday.unit_per_interval == 'hours':
                     # As we encode everything in days in the database we need to convert
