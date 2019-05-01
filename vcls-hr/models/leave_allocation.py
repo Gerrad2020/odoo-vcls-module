@@ -121,6 +121,8 @@ class LeaveAllocation(models.Model):
                                 '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
                                 '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
 
+        raise UserError("{} | {}".format(len(holidays),holidays.mapped('employee_id.name')))
+
         for holiday in holidays:
             values = {}
 
